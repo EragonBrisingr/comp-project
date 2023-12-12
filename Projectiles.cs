@@ -31,8 +31,8 @@ namespace premiertest
             X = player.X;
             Y = player.Y;
             character = player;
-            inputVector = new Vector2(); //creating new vector puts coords to 0,0
-            
+            inputVector = new Vector2(shootDir.X, shootDir.Y); //creating new vector puts coords to 0,0
+
         }
 
 
@@ -40,7 +40,6 @@ namespace premiertest
         public void Update(GameTime gameTime)
         {
 
-            inputVector = new Vector2(character.);
             Vector2 moveVector = inputVector * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 

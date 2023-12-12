@@ -34,7 +34,7 @@ namespace premiertest
             
             character = new Character(200, 200);
             //enemy = new Enemy(300,300, character);
-            projectiles = new Projectiles(character);
+            
         }
 
         protected override void Update(GameTime gameTime)
