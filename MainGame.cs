@@ -45,7 +45,7 @@ namespace premiertest
             // TODO: Add your update logic here
             character.Update(gameTime);
             //enemy.Update(gameTime);
-            projectiles.Update(gameTime);
+            
 
 
             base.Update(gameTime);
@@ -60,7 +60,8 @@ namespace premiertest
 
             character.Draw(_spriteBatch);
             //enemy.Draw(_spriteBatch);
-            projectiles.Draw(_spriteBatch);
+
+            
 
 
 

@@ -21,54 +21,26 @@ namespace premiertest
         public const float Size = 20f;
 
         Vector2 inputVector;
-        int state = 0;
+        
 
 
         Character character;
 
-        public Projectiles(Character player)
+        public Projectiles(Character player, Vector2 shootDir)
         {
             X = player.X;
             Y = player.Y;
             character = player;
             inputVector = new Vector2(); //creating new vector puts coords to 0,0
+            
         }
 
 
 
         public void Update(GameTime gameTime)
         {
-            KeyboardState keyState = Keyboard.GetState();
 
-
-            if (keyState.IsKeyDown(Keys.Right) && state ==0)
-            {
-                inputVector.X = 1;
-                state = 1;
-            }
-            else if (keyState.IsKeyDown(Keys.Left) && state == 0)
-            {
-                inputVector.X = -1;
-                state = 1;
-            }
-
-            else if (keyState.IsKeyDown(Keys.Up) && state == 0)
-            {
-                inputVector.Y = -1;
-                state = 1;
-            }
-
-            else if (keyState.IsKeyDown(Keys.Down) && state == 0)
-            {
-                inputVector.Y = 1;
-                state = 1;
-            }
-
-            if (inputVector.Length() != 0)
-            {
-                inputVector = Vector2.Normalize(inputVector);
-            }
-
+            inputVector = new Vector2(character.);
             Vector2 moveVector = inputVector * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 
@@ -76,10 +48,12 @@ namespace premiertest
             Y += moveVector.Y;
 
         }
+
+
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.DrawRectangle(new RectangleF(X - Size / 2, Y - Size / 2, Size, Size), Color.Black, thickness: 5); //google enums
+            spriteBatch.DrawRectangle(new RectangleF(X - Size / 2, Y - Size / 2, Size, Size), Color.Black, thickness: 3); //google enums
 
         }
 

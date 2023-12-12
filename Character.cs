@@ -19,9 +19,14 @@ namespace premiertest
         public const float Speed = 150f;
         public const float Size = 80f;
 
+        
+
+        public List<Projectiles> projectilesList;
+
         public Character(float x, float y)
         {
             (X, Y) = (x, y);
+            projectilesList = new List<Projectiles> ();
         }
 
         public void Update(GameTime gameTime)
@@ -30,6 +35,9 @@ namespace premiertest
 
             Vector2 inputVector = new Vector2(); //creating new vector puts coords to 0,0
 
+            Vector2 shootVector = new Vector2();
+
+            //movement
             if (keyState.IsKeyDown(Keys.D))
             {
                 inputVector.X = 1;
@@ -48,9 +56,43 @@ namespace premiertest
                 inputVector.Y = 1;
             }
 
+            //shooting directions
+            if (keyState.IsKeyDown(Keys.Right))
+            {
+                shootVector.X = 1;
+                
+                projectilesList.Add(new Projectiles(this, shootVector));
+            }
+            else if (keyState.IsKeyDown(Keys.Left))
+            {
+                shootVector.X = -1;
+                
+                projectilesList.Add(new Projectiles(this, shootVector));
+            }
+
+            else if (keyState.IsKeyDown(Keys.Up))
+            {
+                shootVector.Y = -1;
+               
+                projectilesList.Add(new Projectiles(this, shootVector));
+            }
+
+            else if (keyState.IsKeyDown(Keys.Down))
+            {
+                shootVector.Y = 1;
+                
+                projectilesList.Add(new Projectiles(this, shootVector));
+            }
+
+            //normalizing vectors
             if (inputVector.Length() != 0)
             {
-                inputVector /= inputVector.Length();
+                inputVector = Vector2.Normalize(inputVector);
+            }
+
+            if (shootVector.Length() != 0)
+            {
+                shootVector = Vector2.Normalize(shootVector);
             }
             //(1, 1) -> (1/sqrt(2), 1/sqrt(2) ) 
 
@@ -59,11 +101,22 @@ namespace premiertest
 
             X += moveVector.X;
             Y += moveVector.Y;
+            foreach (var projectile in projectilesList)
+            {
+                projectile.Update(gameTime);
+            }
+
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.DrawRectangle(new RectangleF(X-Size/2, Y-Size/2, Size, Size), Color.DarkGray, thickness : 5); //google enums
+
+            foreach(var projectile in projectilesList)
+            {
+                projectile.Draw(spritebatch);
+            }
+
         }
 
         
