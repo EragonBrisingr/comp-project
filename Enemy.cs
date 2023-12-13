@@ -31,7 +31,8 @@ namespace premiertest
 
         protected int state;
 
-        
+        public float timeElapsed = 0f;
+        public float timeAllowed = 1f;
 
         public Enemy(float x, float y, Character player)
         {
@@ -47,6 +48,9 @@ namespace premiertest
             enemyPosition = new Vector2(X, Y);
 
             direction = playerPosition - enemyPosition;
+
+            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
 
             if (direction != Vector2.Zero)
             {
@@ -69,14 +73,18 @@ namespace premiertest
 
         public void CheckCollision()
         {
-            if (X < character.X + Character.Size &&
-                X + Size > character.X &&
-                Y < character.Y + Character.Size &&
-                Y + Size > character.Y)
-            {
-                Debug.Write("Collision Detected");
-            }
 
+            if (timeElapsed >= timeAllowed)
+            {
+                if (X < character.X + Character.Size &&
+                                X + Size > character.X &&
+                                Y < character.Y + Character.Size &&
+                                Y + Size > character.Y)
+                {
+                    Debug.Write("Enemy Collision Detected \t");
+                }
+                timeElapsed = 0;
+            }
         }
     }
 }

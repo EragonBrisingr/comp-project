@@ -23,8 +23,8 @@ namespace premiertest
 
         Vector2 inputVector;
 
-
-
+        public float timeElapsed = 0f;
+        public float timeAllowed = 1f;
 
         Character character;
 
@@ -34,14 +34,13 @@ namespace premiertest
             Y = player.Y;
             character = player;
             inputVector = new Vector2(shootDir.X, shootDir.Y); //creating new vector puts coords to 0,0
-
         }
 
         public void Update(GameTime gameTime)
         {
+            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Vector2 moveVector = inputVector * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
 
             X += moveVector.X;
             Y += moveVector.Y;
@@ -51,14 +50,17 @@ namespace premiertest
 
         public void CheckCollision()
         {
-            if (X < character.X + Character.Size &&
-                X + Size > character.X &&
-                Y < character.Y + Character.Size &&
-                Y + Size > character.Y)
+            if (timeElapsed >= timeAllowed)
             {
-                Debug.Write("Collision Detected");
+                timeElapsed = 0;
+                if (X < character.X + Character.Size &&
+                                X + Size > character.X &&
+                                Y < character.Y + Character.Size &&
+                                Y + Size > character.Y)
+                {
+                    Debug.Write("Bullet Collision Detected");
+                }
             }
-
         }
 
 

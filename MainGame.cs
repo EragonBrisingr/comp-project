@@ -11,6 +11,7 @@ namespace premiertest
         private Character character;
         private Enemy enemy;
         private Projectiles projectiles;
+        private HealthBar health;
 
         public MainGame()
         {
@@ -34,7 +35,8 @@ namespace premiertest
             
             character = new Character(200, 200);
             enemy = new Enemy(300,300, character);
-            
+            health = new HealthBar(20, 20);
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -45,6 +47,7 @@ namespace premiertest
             // TODO: Add your update logic here
             character.Update(gameTime);
             enemy.Update(gameTime);
+            health.Update(gameTime);
             
 
 
@@ -60,7 +63,7 @@ namespace premiertest
 
             character.Draw(_spriteBatch);
             enemy.Draw(_spriteBatch);
-
+            health.Draw(_spriteBatch);
             
 
 

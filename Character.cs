@@ -72,27 +72,23 @@ namespace premiertest
                 shootVector.X = -1;
                 ShootBullet(shootVector);
             }
-
             else if (keyState.IsKeyDown(Keys.Up))
             {
                 shootVector.Y = -1;
 
                 ShootBullet(shootVector);
             }
-
             else if (keyState.IsKeyDown(Keys.Down))
             {
                 shootVector.Y = 1;
 
                 ShootBullet(shootVector);
             }
-
             //normalizing vectors
             if (inputVector.Length() != 0)
             {
                 inputVector = Vector2.Normalize(inputVector);
             }
-
             if (shootVector.Length() != 0)
             {
                 shootVector = Vector2.Normalize(shootVector);
@@ -129,32 +125,14 @@ namespace premiertest
 
         public void ShootBullet(Vector2 shooter)
         {
-            
-            if(timeElapsed>= timeAllowed)
-            {
 
+            if (timeElapsed >= timeAllowed)
+            {
                 projectilesList.Add(new Projectiles(this, shooter));
                 timeElapsed = 0;
             }
 
         }
-
-
-
-        public bool UpdateTimer(GameTime gameTime)
-        {
-            timeElapsed =+ (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeElapsed >= timeAllowed)
-            {
-                timeElapsed = 0;
-
-                return true;
-            }
-            else { return false; };
-
-        }
-
-
 
     }
 }
