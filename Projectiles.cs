@@ -21,7 +21,8 @@ namespace premiertest
         public const float Size = 20f;
 
         Vector2 inputVector;
-        
+
+
 
 
         Character character;
@@ -35,8 +36,6 @@ namespace premiertest
 
         }
 
-
-
         public void Update(GameTime gameTime)
         {
 
@@ -47,6 +46,9 @@ namespace premiertest
             Y += moveVector.Y;
 
         }
+
+        
+
 
 
         public void Draw(SpriteBatch spriteBatch)

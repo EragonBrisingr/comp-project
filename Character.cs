@@ -19,6 +19,8 @@ namespace premiertest
         public const float Speed = 150f;
         public const float Size = 80f;
 
+        public float timeElapsed = 0f;
+        public float timeAllowed = 0.5f;
         
 
         public List<Projectiles> projectilesList;
@@ -37,10 +39,13 @@ namespace premiertest
 
             Vector2 shootVector = new Vector2();
 
+            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             //movement
             if (keyState.IsKeyDown(Keys.D))
             {
                 inputVector.X = 1;
+
             }
             else if (keyState.IsKeyDown(Keys.A))
             {
@@ -60,28 +65,26 @@ namespace premiertest
             if (keyState.IsKeyDown(Keys.Right))
             {
                 shootVector.X = 1;
-                
-                projectilesList.Add(new Projectiles(this, shootVector));
+                ShootBullet(shootVector);
             }
             else if (keyState.IsKeyDown(Keys.Left))
             {
                 shootVector.X = -1;
-                
-                projectilesList.Add(new Projectiles(this, shootVector));
+                ShootBullet(shootVector);
             }
 
             else if (keyState.IsKeyDown(Keys.Up))
             {
                 shootVector.Y = -1;
-               
-                projectilesList.Add(new Projectiles(this, shootVector));
+
+                ShootBullet(shootVector);
             }
 
             else if (keyState.IsKeyDown(Keys.Down))
             {
                 shootVector.Y = 1;
-                
-                projectilesList.Add(new Projectiles(this, shootVector));
+
+                ShootBullet(shootVector);
             }
 
             //normalizing vectors
@@ -96,6 +99,8 @@ namespace premiertest
             }
             //(1, 1) -> (1/sqrt(2), 1/sqrt(2) ) 
 
+            
+
             Vector2 moveVector = inputVector * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 
@@ -108,6 +113,8 @@ namespace premiertest
 
         }
 
+
+
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.DrawRectangle(new RectangleF(X-Size/2, Y-Size/2, Size, Size), Color.DarkGray, thickness : 5); //google enums
@@ -119,7 +126,34 @@ namespace premiertest
 
         }
 
-        
+
+        public void ShootBullet(Vector2 shooter)
+        {
+            
+            if(timeElapsed>= timeAllowed)
+            {
+
+                projectilesList.Add(new Projectiles(this, shooter));
+                timeElapsed = 0;
+            }
+
+        }
+
+
+
+        public bool UpdateTimer(GameTime gameTime)
+        {
+            timeElapsed =+ (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (timeElapsed >= timeAllowed)
+            {
+                timeElapsed = 0;
+
+                return true;
+            }
+            else { return false; };
+
+        }
+
 
 
     }
