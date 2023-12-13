@@ -9,7 +9,7 @@ namespace premiertest
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Character character;
-        //private Enemy enemy;
+        private Enemy enemy;
         private Projectiles projectiles;
 
         public MainGame()
@@ -33,7 +33,7 @@ namespace premiertest
             // TODO: use this.Content to load your game content here
             
             character = new Character(200, 200);
-            //enemy = new Enemy(300,300, character);
+            enemy = new Enemy(300,300, character);
             
         }
 
@@ -44,7 +44,7 @@ namespace premiertest
 
             // TODO: Add your update logic here
             character.Update(gameTime);
-            //enemy.Update(gameTime);
+            enemy.Update(gameTime);
             
 
 
@@ -59,7 +59,7 @@ namespace premiertest
             _spriteBatch.Begin();
 
             character.Draw(_spriteBatch);
-            //enemy.Draw(_spriteBatch);
+            enemy.Draw(_spriteBatch);
 
             
 

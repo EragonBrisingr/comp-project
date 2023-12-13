@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,9 +46,20 @@ namespace premiertest
             X += moveVector.X;
             Y += moveVector.Y;
 
+            CheckCollision();
         }
 
-        
+        public void CheckCollision()
+        {
+            if (X < character.X + Character.Size &&
+                X + Size > character.X &&
+                Y < character.Y + Character.Size &&
+                Y + Size > character.Y)
+            {
+                Debug.Write("Collision Detected");
+            }
+
+        }
 
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using MonoGame.Extended;
 
 namespace premiertest
 {
-    internal class Enemy
+    public class Enemy
     {
 
         Character character;
@@ -22,7 +23,7 @@ namespace premiertest
         public float X { get; set; }
         
 
-        public const float Speed = 100f;
+        public const float Speed = 10f;
         public const float Size = 70f;
         private Vector2 enemyPosition;
         private Vector2 playerPosition;
@@ -58,6 +59,7 @@ namespace premiertest
             X += moveVector.X;
             Y += moveVector.Y;
 
+            CheckCollision();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -65,7 +67,16 @@ namespace premiertest
             spriteBatch.DrawRectangle(new RectangleF(X - Size / 2, Y - Size / 2, Size, Size), Color.Red, thickness: 5);
         }
 
+        public void CheckCollision()
+        {
+            if (X < character.X + Character.Size &&
+                X + Size > character.X &&
+                Y < character.Y + Character.Size &&
+                Y + Size > character.Y)
+            {
+                Debug.Write("Collision Detected");
+            }
 
-
+        }
     }
 }
