@@ -24,9 +24,10 @@ namespace premiertest
         Vector2 inputVector;
 
         public float timeElapsed = 0f;
-        public float timeAllowed = 1f;
+        public float timeAllowed = .1f;
 
         Character character;
+        Enemy enemy;
 
         public Projectiles(Character player, Vector2 shootDir)
         {
@@ -34,6 +35,7 @@ namespace premiertest
             Y = player.Y;
             character = player;
             inputVector = new Vector2(shootDir.X, shootDir.Y); //creating new vector puts coords to 0,0
+            enemy = new Enemy(X,Y,player);
         }
 
         public void Update(GameTime gameTime)
@@ -44,7 +46,6 @@ namespace premiertest
 
             X += moveVector.X;
             Y += moveVector.Y;
-
             CheckCollision();
         }
 
@@ -52,18 +53,16 @@ namespace premiertest
         {
             if (timeElapsed >= timeAllowed)
             {
-                timeElapsed = 0;
-                if (X < character.X + Character.Size &&
-                                X + Size > character.X &&
-                                Y < character.Y + Character.Size &&
+                if (X < enemy.X + Enemy.Size &&
+                                X + Size > enemy.X &&
+                                Y < enemy.Y + Enemy.Size &&
                                 Y + Size > character.Y)
                 {
-                    Debug.Write("Bullet Collision Detected");
+                    Debug.Write("Bullet Collision Detected \t");
                 }
+                timeElapsed = 0;
             }
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -71,11 +70,5 @@ namespace premiertest
             spriteBatch.DrawRectangle(new RectangleF(X - Size / 2, Y - Size / 2, Size, Size), Color.Black, thickness: 3); //google enums
 
         }
-
-
-
-
-
-
     }
 }

@@ -24,11 +24,13 @@ namespace premiertest
         
 
         public List<Projectiles> projectilesList;
+        public List<Enemy> enemyList;
 
         public Character(float x, float y)
         {
             (X, Y) = (x, y);
             projectilesList = new List<Projectiles> ();
+            enemyList = new List<Enemy> ();
         }
 
         public void Update(GameTime gameTime)
@@ -122,6 +124,10 @@ namespace premiertest
 
         }
 
+        public void AddEnemy(Enemy enemy)
+        {
+            enemyList.Add(enemy);
+        }
 
         public void ShootBullet(Vector2 shooter)
         {
@@ -133,6 +139,8 @@ namespace premiertest
             }
 
         }
+
+
 
     }
 }
