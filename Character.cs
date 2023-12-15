@@ -134,7 +134,7 @@ namespace premiertest
 
             if (timeElapsed >= timeAllowed)
             {
-                projectilesList.Add(new Projectiles(this, shooter));
+                projectilesList.Add(new Projectiles(this, shooter, enemyList));
                 timeElapsed = 0;
             }
 

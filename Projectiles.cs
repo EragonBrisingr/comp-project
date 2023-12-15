@@ -27,15 +27,15 @@ namespace premiertest
         public float timeAllowed = .1f;
 
         Character character;
-        Enemy enemy;
+        List<Enemy> enemies;
 
-        public Projectiles(Character player, Vector2 shootDir)
+        public Projectiles(Character player, Vector2 shootDir, List<Enemy> enemies)
         {
             X = player.X;
             Y = player.Y;
             character = player;
             inputVector = new Vector2(shootDir.X, shootDir.Y); //creating new vector puts coords to 0,0
-            enemy = new Enemy(X,Y,player);
+            this.enemies = enemies;
         }
 
         public void Update(GameTime gameTime)
@@ -53,12 +53,16 @@ namespace premiertest
         {
             if (timeElapsed >= timeAllowed)
             {
-                if (X < enemy.X + Enemy.Size &&
-                                X + Size > enemy.X &&
-                                Y < enemy.Y + Enemy.Size &&
-                                Y + Size > character.Y)
+                foreach (Enemy enemy in enemies)
                 {
-                    Debug.Write("Bullet Collision Detected \t");
+                    if (X < enemy.X + Enemy.Size &&
+                        X + Size > enemy.X &&
+                        Y < enemy.Y + Enemy.Size &&
+                        Y + Size > enemy.Y)
+                    {
+                        Debug.Write("Bullet Collision Detected \t");
+                        break; // Optional: break if you want to stop checking after the first collision
+                    }
                 }
                 timeElapsed = 0;
             }
