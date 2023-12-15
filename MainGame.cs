@@ -32,11 +32,16 @@ namespace premiertest
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+
+            // Define health bar position
             
+
+
             character = new Character(200, 200);
-            enemy = new Enemy(300,300, character);
+            health = new HealthBar(character);
+            enemy = new Enemy(300, 300, character);
             character.AddEnemy(enemy);
-            health = new HealthBar(20, 20);
 
         }
 
@@ -49,7 +54,6 @@ namespace premiertest
             character.Update(gameTime);
             enemy.Update(gameTime);
             health.Update(gameTime);
-            
 
 
             base.Update(gameTime);

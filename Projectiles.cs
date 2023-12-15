@@ -24,7 +24,7 @@ namespace premiertest
         Vector2 inputVector;
 
         public float timeElapsed = 0f;
-        public float timeAllowed = .1f;
+        public float timeAllowed = .5f;
 
         Character character;
         List<Enemy> enemies;

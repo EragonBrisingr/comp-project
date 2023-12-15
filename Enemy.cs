@@ -73,18 +73,19 @@ namespace premiertest
 
         public void CheckCollision()
         {
-
             if (timeElapsed >= timeAllowed)
             {
                 if (X < character.X + Character.Size &&
-                                X + Size > character.X &&
-                                Y < character.Y + Character.Size &&
-                                Y + Size > character.Y)
+                    X + Size > character.X &&
+                    Y < character.Y + Character.Size &&
+                    Y + Size > character.Y)
                 {
                     Debug.Write("Enemy Collision Detected \t");
+                    character.Health --;
                 }
                 timeElapsed = 0;
             }
         }
+
     }
 }

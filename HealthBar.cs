@@ -16,35 +16,38 @@ namespace premiertest
     public class HealthBar
     {
 
-        public float X {  get; set; }
+        public float x = 20;
 
-        public float Y { get; set; }
+        public float y = 20;
+
+        public float initialHealh = 4;
 
         public const float Size = 30f;
 
-        public HealthBar(float x, float y)
+        Character character;
+
+        public HealthBar(Character character)
         {
-            X = x;
-            Y = y;
+            this.character = character;
         }
-
-
 
 
         public void Update(GameTime gameTime)
         {
 
+
         }
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float x = X;
-            float y = Y;
-            for (int i = 0; i<4; i++)
+            Debug.WriteLine(character.Health);
+            for (int i = 0; i < character.Health; i++)
             {
-                spriteBatch.DrawRectangle(new RectangleF(x, y, Size, Size), Color.Red, thickness: 3); //google enums
-                x += 30;
+                spriteBatch.DrawRectangle(new RectangleF(x + i*(Size+10), y, Size, Size), Color.Red, thickness: 3); //google enums
+                
             }
+
 
         }
 
