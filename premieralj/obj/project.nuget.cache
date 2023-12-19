@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "nK1NH1qPvw82msuD6RaOHtmEbtIBbYmQk9VF3H9MCA99AdkCn/lCQGam2VCY55XMywLVy9m5T/toUfW8Moqm4g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\alj\\premieralj\\premieralj.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
