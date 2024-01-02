@@ -13,6 +13,7 @@ namespace premiertest
         private Projectiles projectiles;
         private HealthBar health;
         //private List<Entity> entityList;
+        //private List<CollisionEntity> collisionEntityList;
 
         public MainGame()
         {
@@ -44,8 +45,9 @@ namespace premiertest
             enemy = new Enemy(300, 300, character);
             character.AddEnemy(enemy);
 
-            //entityList.Add(character);
+            //collisionEntityList.Add(character);
             //entityList.Add(new HealthBar(character));
+            // ...
 
         }
 
@@ -61,6 +63,16 @@ namespace premiertest
 
             //foreach(Entity e in entityList){
             // e.Update(gameTime);
+            //}
+
+            //for (int i = 0; i < collisionEntityList.Length(); i++){
+            //  for (int j = i+1; j < collisionEntityList.Length(); j ++) {
+            //    RectangleF c1 = collisionEntityList[i].GetHitbox();
+            //    RectangleF c2 = collisionEntityList[j].GetHitbox();
+            //    if (c1.Intersects(c2)) { 
+            //        collisionEntityList[i].OnCollision(collisionEntityList[j]);
+            //        collisionEntityList[j].OnCollision(collisionEntityList[i]);
+            //    }
             //}
 
 
@@ -81,6 +93,10 @@ namespace premiertest
 
             //foreach(Entity e in entityList){
             // e.Draw(_spriteBatch);
+            //}
+
+            //foreach(CollisionE ce in collisionEntityList){
+            // ce.Draw(_spriteBatch);
             //}
 
             _spriteBatch.End();
