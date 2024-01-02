@@ -12,6 +12,7 @@ namespace premiertest
         private Enemy enemy;
         private Projectiles projectiles;
         private HealthBar health;
+        //private List<Entity> entityList;
 
         public MainGame()
         {
@@ -43,6 +44,9 @@ namespace premiertest
             enemy = new Enemy(300, 300, character);
             character.AddEnemy(enemy);
 
+            //entityList.Add(character);
+            //entityList.Add(new HealthBar(character));
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -54,6 +58,10 @@ namespace premiertest
             character.Update(gameTime);
             enemy.Update(gameTime);
             health.Update(gameTime);
+
+            //foreach(Entity e in entityList){
+            // e.Update(gameTime);
+            //}
 
 
             base.Update(gameTime);
@@ -71,7 +79,9 @@ namespace premiertest
             health.Draw(_spriteBatch);
             
 
-
+            //foreach(Entity e in entityList){
+            // e.Draw(_spriteBatch);
+            //}
 
             _spriteBatch.End();
 
