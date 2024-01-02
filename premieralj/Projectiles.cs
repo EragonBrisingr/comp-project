@@ -18,7 +18,7 @@ namespace premiertest
         public float X { get; set; }
         public float Y { get; set; }
 
-        public const float Speed = 150f;
+        public const float Speed = 250f;
         public const float Size = 20f;
 
         Vector2 inputVector;
@@ -28,7 +28,6 @@ namespace premiertest
 
         Character character;
         List<Enemy> enemies;
-        Enemy enemy;
 
         public Projectiles(Character player, Vector2 shootDir, List<Enemy> enemies)
         {

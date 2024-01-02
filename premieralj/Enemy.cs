@@ -24,8 +24,8 @@ namespace premiertest
 
         public float EnemyHealth { get; set; } = 3;
 
-        public const float Speed = 10f;
-        public const float Size = 70f;
+        public const float Speed = 100f;
+        public const float Size = 50f;
         private Vector2 enemyPosition;
         private Vector2 playerPosition;
         private Vector2 direction;
@@ -77,7 +77,7 @@ namespace premiertest
 
         public void CheckCollision()
         {
-            if (timeElapsed >= timeAllowed)
+            if (timeElapsed >= timeAllowed && EnemyHealth != 0)
             {
                 if (X < character.X + Character.Size &&
                     X + Size > character.X &&

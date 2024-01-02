@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("premieralj")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+878055b83accbb5ba350a0badcfd771879bdd042")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("premieralj")]
 [assembly: System.Reflection.AssemblyTitleAttribute("premieralj")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
