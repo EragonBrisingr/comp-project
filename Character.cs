@@ -13,6 +13,9 @@ namespace premiertest
 {
     public class Character
     {
+        //private Vector2 position;
+        //public Vector2 Position {get => position; set => value : position = value;}
+        
         public float X { get; set; }
         public float Y { get; set; }
 
@@ -65,6 +68,7 @@ namespace premiertest
             {
                 inputVector.Y = 1;
             }
+
 
             //shooting directions
             if (keyState.IsKeyDown(Keys.Right))
